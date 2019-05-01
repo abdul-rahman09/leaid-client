@@ -15,7 +15,7 @@ export class SignupClientComponent implements OnInit {
 	isLoading = true;
 	username;
 	password;
-	data = {};
+	data:any = {};
 	error:any = {invalid: false}
 	url = "http://localhost:8000/SignupClient/"
 
