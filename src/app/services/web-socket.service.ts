@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class WebSocketService {
 
   constructor() { }
-  socketRef = new WebSocket('ws://leaid.herokuapp.com/ws/chat');
+  socketRef = new WebSocket('wss://leaid.herokuapp.com/ws/chat');
 
   connect() {
     this.socketRef.onopen = () => {
