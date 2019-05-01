@@ -2,7 +2,8 @@
   "name": "client",
   "version": "6.1.0",
   "engines": {
-    "node": "10.3.0"
+    "node": "10.3.0",
+     "npm": "6.x"
   },
   "scripts": {
     "ng": "ng",
