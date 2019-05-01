@@ -1,6 +1,6 @@
 
 class WebSocketService {
-  socketRef = new WebSocket('ws://leaid.herokuapp.com/ws/chat');
+  socketRef = new WebSocket('wss://leaid.herokuapp.com/ws/chat');
 
   static instance = null;
   callbacks = {};
