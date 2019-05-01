@@ -10,7 +10,7 @@ import * as jwt_decode from "jwt-decode";
 	styleUrls: ['./chooselawyer-client.component.css']
 })
 export class ChooselawyerClientComponent implements OnInit {
-	
+
 	category;
 	allCities = ['Lahore','Karachi','islamabad','peshawar','queta','murree','others']
 	lawyers : Array<any> = [];
@@ -38,17 +38,17 @@ export class ChooselawyerClientComponent implements OnInit {
 				this.router.navigate(['/replyquestion-lawyer']);
 			}
 			this.displayName = this.data.username.split('@')[0]
-		
+
 		let formdata = {
 			'catogery': this.category
 		}
-		this.http.post("http://localhost:8000/getLawyersByCategory/",{'catogery': this.category}).toPromise().then((res:any) => {
+		this.http.post("https://leaid.herokuapp.com/getLawyersByCategory/",{'catogery': this.category}).toPromise().then((res:any) => {
 			for (var i = 0; i < res.length; ++i) {
 				let id = {
 					'lawyerid': res[i].lawyerid_id
 				}
-				this.http.post("http://localhost:8000/getLawyerById/",{'lawyerid': res[i].lawyerid_id}).subscribe((lawyer:any) => {
-					lawyer.image = "http://localhost:8000/media/" + lawyer.image
+				this.http.post("https://leaid.herokuapp.com/getLawyerById/",{'lawyerid': res[i].lawyerid_id}).subscribe((lawyer:any) => {
+					lawyer.image = "https://leaid.herokuapp.com/media/" + lawyer.image
 					this.lawyers.push(lawyer);
 					this.allLawyers.push(lawyer);
 				});
@@ -56,7 +56,7 @@ export class ChooselawyerClientComponent implements OnInit {
 		});
 	}
 
-	
+
 
 	lawyerProfile(lawyer){
 		this.router.navigate(["/lawyerprofile-client"], { queryParams: { "id": lawyer.id,"name":lawyer.username } })
@@ -68,12 +68,12 @@ export class ChooselawyerClientComponent implements OnInit {
 	}
 
 	updateRatingFilter(event:any){
-		this.isApplyRatingFilter = event.target.checked 
+		this.isApplyRatingFilter = event.target.checked
 		this.filtering()
 	}
 
 	updateCityFilter(event:any){
-		this.isApplyCityFilter = event.target.checked 
+		this.isApplyCityFilter = event.target.checked
 		this.filtering()
 	}
 

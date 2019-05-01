@@ -25,16 +25,16 @@ export class ReviewsComponent implements OnInit {
 		});
 	this.data = this.authService.getUserData()
 
-			
+
 			let formdata = {
 				'username': this.username
 			}
-		
-			this.http.post("http://localhost:8000/review/",{'username': this.username}).toPromise().then((res:any) => {
+
+			this.http.post("https://leaid.herokuapp.com/review/",{'username': this.username}).toPromise().then((res:any) => {
 				console.log('Response',res);
 				for (var i = 0; i < res.length; ++i) {
-					res[i].clientimage = "http://localhost:8000/media/" + res[i].clientimage;
-				
+					res[i].clientimage = "https://leaid.herokuapp.com/media/" + res[i].clientimage;
+
 				}
 				this.arr = res;
 			},

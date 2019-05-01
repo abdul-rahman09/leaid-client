@@ -27,7 +27,7 @@ export class ForgotPasswordComponent implements OnInit {
   	let formdata = {
 	  	"mail":this.mail
   	}
-	this.http.post("http://localhost:8000/testmany/",formdata).toPromise().then((res:any) => {
+	this.http.post("https://leaid.herokuapp.com/testmany/",formdata).toPromise().then((res:any) => {
 		console.log('Response',res);
 	  	this.show = 2;
 	  	this.err = ""
@@ -44,7 +44,7 @@ export class ForgotPasswordComponent implements OnInit {
 	  	"mail": this.mail,
 	  	"code": this.code
   	}
-	this.http.post("http://localhost:8000/verifyCode/",formdata).toPromise().then((res:any) => {
+	this.http.post("https://leaid.herokuapp.com/verifyCode/",formdata).toPromise().then((res:any) => {
 		console.log('Response',res);
 	  	this.show = 3;
 	},
@@ -60,7 +60,7 @@ export class ForgotPasswordComponent implements OnInit {
 	  	"mail": this.mail,
 	  	"password": this.password
   	}
-	this.http.post("http://localhost:8000/updatePassword/",formdata).toPromise().then((res:any) => {
+	this.http.post("https://leaid.herokuapp.com/updatePassword/",formdata).toPromise().then((res:any) => {
 		this.login();
 	},
 	(err:any)=> {
@@ -74,7 +74,7 @@ export class ForgotPasswordComponent implements OnInit {
 			'password': this.password
 		}
 
-		this.http.post("http://localhost:8000/loginUser/",formdata).toPromise().then((res:any) => {
+		this.http.post("https://leaid.herokuapp.com/loginUser/",formdata).toPromise().then((res:any) => {
 			console.log('Response',res);
 			localStorage.setItem('token',res.token)
 			try{

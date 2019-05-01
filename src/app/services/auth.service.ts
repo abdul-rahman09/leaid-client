@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 	private token;
-	private url = "http://localhost:8000/verify/";
+	private url = "https://leaid.herokuapp.com/verify/";
 	private messageSource = new BehaviorSubject(null);
 	currentMessage = this.messageSource.asObservable();
 

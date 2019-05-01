@@ -1,6 +1,6 @@
 
 class WebSocketService {
-  socketRef = new WebSocket('ws://localhost:8000/ws/chat');
+  socketRef = new WebSocket('ws://leaid.herokuapp.com/ws/chat');
 
   static instance = null;
   callbacks = {};
@@ -62,7 +62,7 @@ class WebSocketService {
 
   newChatMessage(message) {
     // console.log(message)
-    this.sendMessage({ command: 'new_message', from: message.from, text: message.text }); 
+    this.sendMessage({ command: 'new_message', from: message.from, text: message.text });
   }
 
   addCallbacks(messagesCallback, newMessageCallback) {
@@ -70,7 +70,7 @@ class WebSocketService {
     this.callbacks['fetch_messages'] = messagesCallback;
     this.callbacks['new_message'] = newMessageCallback;
   }
-  
+
   sendMessage(data) {
     // console.log(data)
     try {
@@ -78,7 +78,7 @@ class WebSocketService {
     }
     catch(err) {
       console.log(err.message);
-    }  
+    }
   }
 
   state() {

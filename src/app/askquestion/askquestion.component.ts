@@ -27,8 +27,8 @@ export class AskquestionComponent implements OnInit {
 		  	}
 		  	this.displayName = this.data.username.split('@')[0]
 		  	console.log(this.displayName)
-		
-	this.http.get("http://localhost:8000/getCategories").toPromise().then((res:any) => {
+
+	this.http.get("https://leaid.herokuapp.com/getCategories").toPromise().then((res:any) => {
 			this.allCategories = res;
 			console.log("Xczcx",this.allCategories)
 		  	this.selectedCatogery = this.allCategories[0].catogery
@@ -52,7 +52,7 @@ export class AskquestionComponent implements OnInit {
   	}
   	console.log(formdata);
 
-  	this.http.post("http://localhost:8000/askquestion/",formdata).toPromise().then((res:any) => {
+  	this.http.post("https://leaid.herokuapp.com/askquestion/",formdata).toPromise().then((res:any) => {
 			console.log('Response',res);
 			this.text = "";
 			this.description = "";

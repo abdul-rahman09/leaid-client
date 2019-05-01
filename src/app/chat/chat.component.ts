@@ -29,14 +29,14 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     this.data = this.authService.getUserData()
         if(this.data.type == "lawyer") {
-          this.http.get("http://localhost:8000/getClients/").toPromise().then((res:any) => {
+          this.http.get("https://leaid.herokuapp.com/getClients/").toPromise().then((res:any) => {
               for (var i = 0; i < res.length; ++i) {
-                res[i].image = "http://localhost:8000/media/" + res[i].image
+                res[i].image = "https://leaid.herokuapp.com/media/" + res[i].image
               }
               this.friends = res;
               this.result = this.friends;
               this.selectedUser = this.friends[0].username
-      
+
           },
           (err:any)=> {
             console.log(err.error.Error,err);
@@ -44,9 +44,9 @@ export class ChatComponent implements OnInit {
           );
         }
         else{
-          this.http.get("http://localhost:8000/getLawyers/").toPromise().then((res:any) => {
+          this.http.get("https://leaid.herokuapp.com/getLawyers/").toPromise().then((res:any) => {
               for (var i = 0; i < res.length; ++i) {
-                res[i].image = "http://localhost:8000/media/" + res[i].image
+                res[i].image = "https://leaid.herokuapp.com/media/" + res[i].image
               }
               this.friends = res;
               this.result = this.friends;
@@ -100,7 +100,7 @@ export class ChatComponent implements OnInit {
     $(document).ready(function(){
       $('#box').val('');
       $("#myID").animate({ scrollTop: $('#myID').height()*3}, 1000)
-          
+
     });
 
     // this.setState({ messages: [...this.state.messages, message]});
@@ -170,8 +170,8 @@ export class ChatComponent implements OnInit {
       formdata['client'] = this.data.username
       formdata['lawyer'] = this.selectedUser
     }
-  
-    this.http.post("http://localhost:8000/getChat/",formdata,{responseType: "blob", headers: {'Accept': 'application/pdf'}}).toPromise().then((res:any) => {
+
+    this.http.post("https://leaid.herokuapp.com/getChat/",formdata,{responseType: "blob", headers: {'Accept': 'application/pdf'}}).toPromise().then((res:any) => {
       importedSaveAs(res, "Chat.pdf");
     (err:any)=> {
       console.log(err);

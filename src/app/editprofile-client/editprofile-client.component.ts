@@ -60,8 +60,8 @@ export class EditprofileClientComponent implements OnInit {
 			'phoneNumber': this.data.phone_number,
 			'email': this.data.email,
 		}
-		
-		this.http.post("http://localhost:8000/editProfileClient/",formdata).toPromise().then((res:any) => {
+
+		this.http.post("https://leaid.herokuapp.com/editProfileClient/",formdata).toPromise().then((res:any) => {
 			Swal.fire({
 			  position: 'top-end',
 			  type: 'success',

@@ -18,7 +18,7 @@ export class SignupLawyerComponent implements OnInit {
 	password;
 	data :any= {};
 	error:any = {invalid: false}
-	url = "http://localhost:8000/adduser/"
+	url = "https://leaid.herokuapp.com/adduser/"
 
 	constructor(private http:HttpClient, private authService: AuthService, private router: Router) { }
 

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class WebSocketService {
 
   constructor() { }
-  socketRef = new WebSocket('ws://localhost:8000/ws/chat');
+  socketRef = new WebSocket('ws://leaid.herokuapp.com/ws/chat');
 
   connect() {
     this.socketRef.onopen = () => {
@@ -49,7 +49,7 @@ export class WebSocketService {
 
   newChatMessage(message) {
     // console.log(message)
-    this.sendMessage({ command: 'new_message', from: message.from, text: message.text }); 
+    this.sendMessage({ command: 'new_message', from: message.from, text: message.text });
   }
 
   addCallbacks(messagesCallback, newMessageCallback) {
@@ -57,7 +57,7 @@ export class WebSocketService {
     // this.callbacks['messages'] = messagesCallback;
     // this.callbacks['new_message'] = newMessageCallback;
   }
-  
+
   sendMessage(data) {
     // console.log(data)
     try {
@@ -65,7 +65,7 @@ export class WebSocketService {
     }
     catch(err) {
       console.log(err.message);
-    }  
+    }
   }
 
   state() {
